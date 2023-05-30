@@ -1,0 +1,3 @@
+MP3_DOWNLOAD_PATH          = 'MP3'
+MP4_DOWNLOAD_PATH          = 'MP4'
+YOUTUB_LINKS_DOWNLOAD_PATH = 'Links.txt'
