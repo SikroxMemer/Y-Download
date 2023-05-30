@@ -1,6 +1,6 @@
 # Y-Download
 
-This Python application allows you to download a list of videos from YouTube in both MP3 and MP4 formats. It uses the pytube library to interact with the YouTube API and download the videos.
+This Python application allows you to download a list of videos from YouTube in both MP3 and MP4 formats. It uses the yt_dlp library to interact with the YouTube API and download the videos.
 
 ## Installation
 
