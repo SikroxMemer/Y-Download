@@ -1,16 +1,16 @@
-import tkinter as tk
-import yt_dlp
+from threading import Thread
 
+import tkinter as tk
 import os
-import sys
+
 
 from config import *
+import yt_dlp
 
 BG = '#0f0f0f'
 FG = '#f1f1f1'
 TITE_FONT = ('monospace', 20, 'bold')
 FONT = ('monospace', 15, 'normal')
-
 
 class main(tk.Tk):
     """
@@ -21,9 +21,9 @@ class main(tk.Tk):
 
         self.var = tk.StringVar()
 
-        self.small_icon = os.path.join(os.path.dirname(__file__) , "logo.png")
+        self.small_icon = os.path.join(os.path.dirname(__file__), "logo.png")
         self.Icon = tk.PhotoImage(file=self.small_icon)
-        self.iconphoto(False,self.Icon)
+        self.iconphoto(False, self.Icon)
 
         self.title('Y-Download')
         self.resizable(False, False)
@@ -114,15 +114,25 @@ class main(tk.Tk):
             padx=5,
             pady=5,
             width=50,
-            command=lambda:self.Download()
+            command=lambda : Thread(target = self.Download ).start()
         )
         self.download.grid(
             row=3,
             column=1,
             pady=10
         )
-
     def Download(self):
+        self.l = tk.Label(
+            text="Your request is downloading . . .",
+            font=('monospace' , 10 , 'bold'),
+            fg=FG,
+            bg=BG,
+            
+        )
+        self.l.grid(
+            row=4,
+            column=1
+        )
         urls = []
         with open(f"{YOUTUB_LINKS_DOWNLOAD_PATH}", "r", newline='') as file:
             for line in file:
@@ -142,7 +152,6 @@ class main(tk.Tk):
                     ydl.download(urls)
             except Exception as e:
                 print(f"An error occurred: {e}")
-    
 
         if self.var.get() == "MP4":
             ydl_opts = {
@@ -154,10 +163,20 @@ class main(tk.Tk):
                     ydl.download(urls)
             except Exception as e:
                 print(f"An error occurred: {e}")
-        print(urls)
+        print("Download Finished")
+        self.l = tk.Label(
+            text='Your request has been downloaded !',
+            font=('monospace' , 10 , 'bold'),
+            fg=FG,
+            bg=BG,
+        )
+        self.l.grid(
+            row=4,
+            column=1
+        )
 
 
-
+    
 Program = main()
-
 Program.mainloop()
+

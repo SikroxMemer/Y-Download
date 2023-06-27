@@ -2,7 +2,7 @@
 
 This Python application allows you to download a list of videos from YouTube in both MP3 and MP4 formats. It uses the yt_dlp library to interact with the YouTube API and download the videos.
 
-## Installation
+## Install Or Edit
 
     Make sure you have Python 3.x installed on your system.
 
@@ -11,10 +11,6 @@ This Python application allows you to download a list of videos from YouTube in 
 Install the required dependencies using pip package manager.
 
     pip install -r requirements.txt
-
-## Usage
-
-    You can start by enter
 
 ## Contributing
 
